@@ -20,12 +20,13 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <div className={classes.App}>
         <Header />
-        <Routes>
-          <Route path='/' component={HomePage} exact />
-          <Route path='/coins/:id' component={CoinPage} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} exact />
+        <Route path="/coins/:id" element={<CoinPage />} exact />
+      </Routes>
       </div>
     </BrowserRouter>
   );
