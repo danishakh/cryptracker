@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Container } from '@material-ui/core'
+import { makeStyles, Container, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
     banner: {
@@ -11,6 +11,13 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         paddingTop: 25,
         justifyContent: 'space-around'
+    },
+    tagline: {
+        display: 'flex',
+        height: '40%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        textAlign: 'center'
     }
 }));
 
@@ -21,7 +28,28 @@ const Banner = () => {
     return (
         <div className={classes.banner}>
             <Container className={classes.bannerContent}>
-
+                <div className={classes.tagline}>
+                    <Typography
+                        variant='h2'
+                        style={{
+                            fontWeight: 'bold',
+                            marginBottom: 15,
+                            fontFamily: 'Mulish'
+                        }}
+                    >
+                        CrypTracker
+                    </Typography>
+                    <Typography
+                        variant='subtitle2'
+                        style={{
+                            color: 'darkgrey',
+                            textTransform: 'capitalize',
+                            fontFamily: 'Mulish'
+                        }}
+                    >
+                        Track all your favorite cryptocurrencies!
+                    </Typography>
+                </div>
             </Container>
         </div>
     )
