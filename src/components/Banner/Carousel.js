@@ -40,6 +40,7 @@ const Carousel = () => {
 
     useEffect(() => {
         fetchTrendingCoins();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currency]);
 
     // check alice carousel documentation - basically this is how many items to show based on how many pixels are shown

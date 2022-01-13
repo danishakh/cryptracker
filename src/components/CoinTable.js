@@ -28,6 +28,7 @@ const CoinTable = () => {
 
     useEffect(() => {
         fetchCoins()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currency])
 
     const darkTheme = createTheme({
@@ -107,7 +108,7 @@ const CoinTable = () => {
 
                                         return (
                                             <TableRow
-                                                onClick={() => history(`/coins/${row.name}`)}
+                                                onClick={() => history(`/coins/${row.id}`)}
                                                 className={classes.row}
                                                 key={row.name}
                                             >
