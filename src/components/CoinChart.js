@@ -45,6 +45,7 @@ const CoinChart = ({ coin }) => {
 
   useEffect(() => {
     fetchHistocalData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency, days]);
 
   const darkTheme = createTheme({
