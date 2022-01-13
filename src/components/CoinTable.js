@@ -1,4 +1,5 @@
 import { Container, createTheme, LinearProgress, makeStyles, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +11,7 @@ const CoinTable = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('')
+    const [page, setPage] = useState(1)
     const history = useNavigate();
 
     const { currency, symbol } = CryptoState();
@@ -48,6 +50,11 @@ const CoinTable = () => {
             '&:hover': {
                 backgroundColor: '#131111',
                 fontFamily: 'Mulish'
+            }
+        },
+        pagination: {
+            '& .MuiPaginationItem-root': {
+                color: 'gold'
             }
         }
     }));
@@ -93,7 +100,9 @@ const CoinTable = () => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {handleSearch().map(row => {
+                                    {handleSearch()
+                                        .slice((page-1) * 10, (page-1) * 10 + 10)   // just show me the first 10 indeces
+                                        .map(row => {
                                         const profit = row.price_change_percentage_24h > 0;
 
                                         return (
@@ -158,6 +167,20 @@ const CoinTable = () => {
                         )
                     }
                 </TableContainer>
+                <Pagination 
+                    style={{
+                        padding: 20,
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }}
+                    count={(handleSearch()?.length / 10)}    // should be the length of the array returned by handleSearch / 10
+                    classes={{ ul: classes.pagination }}
+                    onChange={(_, value) => {
+                        setPage(value);
+                        window.scroll(0, 450);
+                    }}
+                />
             </Container>
         </ThemeProvider>
     )
