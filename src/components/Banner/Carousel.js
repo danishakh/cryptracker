@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
@@ -55,7 +55,7 @@ const Carousel = () => {
     const items = trending.map(coin => {
         // profit will be true if the value is >= 0
         let profit = coin.price_change_percentage_24h >= 0
-
+        
         return (
             <Link className={classes.carouselItem} to={`/coins/${coin.id}`}>
                 <img
@@ -73,7 +73,7 @@ const Carousel = () => {
                             fontWeight: 500
                         }}
                     >
-                        {profit && '+'} {coin?.price_change_percentage_24h?.toFixed(2)}%
+                        {profit && '+'}{coin?.price_change_percentage_24h?.toFixed(2)}%
                     </span>
                 </span>
                 <span syle={{ fontSize: 22, fontWeight: 500 }}>
